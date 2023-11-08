@@ -1,0 +1,175 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+    background-color: #1D1D1D;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(187, 187, 187);
+}
+
+h1 {
+    position: absolute;
+    top: 45%;
+    right: 14%;
+    font-size: 3rem;
+    z-index: -1;
+    transition: all 0.5s;
+}
+
+.container {
+    width: 80%;
+    max-width: 1400px;
+    /* width: min(80%, 1400px); */    /* This line of code is the same as writing width: 80%; and max-width: 1400px; */
+    height: 90vh;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 1rem;
+    background-color: #1D1D1D;
+}
+
+.marvel {
+    grid-column: span 2;
+    grid-row: span 1;
+}
+
+.netflix {
+    grid-column: span 1;
+    grid-row: 2/4;
+}
+
+.hulu {
+    grid-column: 2/3;
+    grid-row: 2/3;
+}
+
+.DC {
+    grid-column: 3/4;
+    grid-row: 1/3;
+}
+
+.disney {
+    grid-column: span 3;
+    grid-row: 3/4;
+}
+
+input {
+    display: none;
+}
+
+label {
+    transition: all 0.8s; 
+}
+
+.click {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: #292728;
+    top: 4rem;
+    right: 4rem;
+    transition: all 0.3s;
+}
+
+.fa-bars, .fa-xmark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4rem;
+    transition: all 0.5s;
+}
+
+.fa-xmark {
+    opacity: 0;
+}
+
+label div {
+    background-color: #292728;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem;
+    gap: 3rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s;
+}
+
+video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top: 0;
+    right: 0;
+    opacity: 0;
+}
+
+img {
+    width: 80px;
+    height: 60px;
+    object-fit: contain;
+    transition: all 0.5s;
+}
+
+p {
+    font-size: 1.4rem;
+    line-height: 1.5;
+    transition: all 0.5s;
+}
+
+input:checked ~ label:not(.click) {
+    transform: perspective(60rem) rotateY(20deg);
+    transform-style: preserve-3d;
+    transform-origin: left;
+}
+
+.click:hover {
+    cursor: pointer;
+}
+
+input:checked + .click .fa-xmark {
+    opacity: 1;
+    color: red;
+}
+
+input:checked + .click .fa-bars {
+    opacity: 0;
+}
+
+input:checked ~ h1 {
+    transform: scale(0.7);
+}
+
+label div:hover {
+    transform: translateZ(5rem) scale(1.05);
+    border-radius: 1rem;
+    box-shadow: 2px 5px 50px 5px rgba(0, 0, 0, 0.603);
+    z-index: 2;
+}
+
+label div:hover video {
+    opacity: 1;
+}
+
+label div:hover img {
+    opacity: 0;
+}
+
+label div:hover p {
+    opacity: 0;
+}
